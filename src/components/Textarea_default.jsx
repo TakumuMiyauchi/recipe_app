@@ -1,6 +1,6 @@
 
 export default function Textarea_default({value, onChange, ...rest }) {
 	return (
-		<textarea  value={value} onChange={onChange} {...rest}/>
+		<textarea className="input" value={value} onChange={onChange} {...rest}/>
 	)
 }

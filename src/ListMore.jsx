@@ -1,11 +1,11 @@
 // リスト詳細ページ
 
+import PageTitle from "./components/PageTitle";
+
 export default function ListMore() {
-
-
   return (
 	<>
-	<h2>詳細ページ</h2>
+	<PageTitle>詳細ページ</PageTitle>
 	</>
 
 	)
