@@ -12,6 +12,11 @@ import Input_default from "./components/input_default";
 import Textarea_default from "./components/textarea_default";
 import Input_button from "./components/Input_button";
 
+import { useDispatch, useSelector } from 'react-redux';
+import { setRecipes } from "./modules/recipes";
+
+
+
 export default function Register() {
   const [form, setForm] = useState({
     name: "",
@@ -24,27 +29,40 @@ export default function Register() {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-	// const [recipe,setRecipe] = useState([])
+	const dispatch = useDispatch();
+
+	const handleRecipeList  = () => {
+		dispatch(setRecipes({
+			name: form.name,
+			genre: form.genre,
+			url: form.url,
+			created: new Date().toISOString(),
+			isDone: false
+		}))
+	}
+
+	// ↓書き換えたい内容
+	// const [recipe,settRecipe] = useState([])
 
 	// const handleRecipeList = () => {
 	// 	setRecipe([
-	// 		...recipe,
+	// 		...recipes,
 	// 		{
 	// 		name: form.name,
 	// 		genre: form.genre,
 	// 		url: form.genre,
+	// 		created: new Date(),
 	// 		isDone: false
 	// 		}
-
 	// 	])
 	// }
 
   return (
     <>
-      <div className="text-center">
+      <div className="">
         <PageTitle>登録ページ</PageTitle>
         <div className="w-full mx-auto">
-          <form action="">
+          <div action="">
             <table className="table mx-auto w-[90%] sm:w-1/2">
               <tbody>
                 <Input_table_tr>
@@ -116,8 +134,8 @@ export default function Register() {
                 </tr>
               </tbody>
             </table>
-            <Input_button>登録</Input_button>
-          </form>
+            <Input_button onClick={handleRecipeList}>登録</Input_button>
+          </div>
         </div>
       </div>
     </>
