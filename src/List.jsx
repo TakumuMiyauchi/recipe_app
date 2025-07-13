@@ -9,21 +9,23 @@ export default function List() {
   return (
     <>
       <PageTitle>レシピ一覧</PageTitle>
-      <div>
+      <ul className="bg-base-100 rounded-box shadow-md mx-auto mt-10 w-[90%] sm:w-1/2 ">
         {addRecipe.map((item) => {
+					if (!item.id) console.warn("id missing", item);
           return (
-            <>
-              <div className="mx-auto w-[90%] sm:w-1/2">
-                <div className="flex ">
-                  <p>{item.genre}</p>
-                  <h3>{item.name}</h3>
-                  <button>詳細</button>
-                </div>
-              </div>
-            </>
+						<li key={item.id} className="p-4 mt-10">
+							<div><img className="size-20 rounded-box mt-4" src="https://img.daisyui.com/images/profile/demo/1@94.webp"/></div>
+              <p className="text-lg mt-4">{item.name}</p>
+              <p className="badge badge-soft badge-secondary mt-4">
+                {item.genre}
+              </p>
+              <a className="mt-4 block">{item.url}</a>
+              <p className="mt-4">{item.memo}</p>
+              <button className="mt-4 btn btn-sm">詳細</button>
+            </li>
           );
         })}
-      </div>
+      </ul>
     </>
   );
 }

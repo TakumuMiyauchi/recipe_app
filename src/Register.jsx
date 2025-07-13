@@ -1,5 +1,6 @@
 // レシピ登録ページ
 import { useState } from "react";
+import { v4 as uuidv4 } from "uuid";
 
 import PageTitle from "./components/PageTitle";
 
@@ -12,10 +13,8 @@ import Input_default from "./components/input_default";
 import Textarea_default from "./components/textarea_default";
 import Input_button from "./components/Input_button";
 
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from "react-redux";
 import { setRecipes } from "./modules/recipes";
-
-
 
 export default function Register() {
   const [form, setForm] = useState({
@@ -25,37 +24,41 @@ export default function Register() {
     memo: "",
   });
 
-	const handleForm = (e) => {
+  const handleForm = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-	const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-	const handleRecipeList  = () => {
-		dispatch(setRecipes({
-			name: form.name,
-			genre: form.genre,
-			url: form.url,
-			created: new Date().toISOString(),
-			isDone: false
-		}))
-	}
+  const handleRecipeList = () => {
+    dispatch(
+      setRecipes({
+        id: uuidv4(),
+        name: form.name,
+        genre: form.genre,
+        url: form.url,
+        memo: form.memo,
+        created: new Date().toISOString(),
+        isDone: false,
+      })
+    );
+  };
 
-	// ↓書き換えたい内容
-	// const [recipe,settRecipe] = useState([])
+  // ↓書き換えたい内容
+  // const [recipe,settRecipe] = useState([])
 
-	// const handleRecipeList = () => {
-	// 	setRecipe([
-	// 		...recipes,
-	// 		{
-	// 		name: form.name,
-	// 		genre: form.genre,
-	// 		url: form.genre,
-	// 		created: new Date(),
-	// 		isDone: false
-	// 		}
-	// 	])
-	// }
+  // const handleRecipeList = () => {
+  // 	setRecipe([
+  // 		...recipes,
+  // 		{
+  // 		name: form.name,
+  // 		genre: form.genre,
+  // 		url: form.genre,
+  // 		created: new Date(),
+  // 		isDone: false
+  // 		}
+  // 	])
+  // }
 
   return (
     <>
@@ -80,7 +83,7 @@ export default function Register() {
                     />
                   </Input_table_td>
                 </Input_table_tr>
-                <tr>
+                <Input_table_tr>
                   <Input_table_th>
                     <Input_label htmlFor="genre">ジャンル</Input_label>
                   </Input_table_th>
@@ -102,8 +105,8 @@ export default function Register() {
                       <option value="others">その他</option>
                     </select>
                   </Input_table_td>
-                </tr>
-                <tr>
+                </Input_table_tr>
+                <Input_table_tr>
                   <Input_table_th>
                     <Input_label htmlFor="url">URL</Input_label>
                   </Input_table_th>
@@ -117,8 +120,8 @@ export default function Register() {
                       placeholder="サイトのURLを記載してください。"
                     />
                   </Input_table_td>
-                </tr>
-                <tr>
+                </Input_table_tr>
+                <Input_table_tr>
                   <Input_table_th>
                     <Input_label htmlFor="memo">メモ</Input_label>
                   </Input_table_th>
@@ -131,7 +134,7 @@ export default function Register() {
                       placeholder="自由に記載してください"
                     />
                   </Input_table_td>
-                </tr>
+                </Input_table_tr>
               </tbody>
             </table>
             <Input_button onClick={handleRecipeList}>登録</Input_button>
