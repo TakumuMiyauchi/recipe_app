@@ -12,6 +12,7 @@ import Input_label from "./components/Input_label";
 import Input_default from "./components/input_default";
 import Textarea_default from "./components/textarea_default";
 import Input_button from "./components/Input_button";
+import Header from "./components/Header";
 
 import { useDispatch } from "react-redux";
 import { setRecipes } from "./modules/recipes";
@@ -43,26 +44,10 @@ export default function Register() {
       })
     );
   };
-
-  // ↓書き換えたい内容
-  // const [recipe,settRecipe] = useState([])
-
-  // const handleRecipeList = () => {
-  // 	setRecipe([
-  // 		...recipes,
-  // 		{
-  // 		name: form.name,
-  // 		genre: form.genre,
-  // 		url: form.genre,
-  // 		created: new Date(),
-  // 		isDone: false
-  // 		}
-  // 	])
-  // }
-
   return (
     <>
-      <div className="">
+      <div>
+        <Header></Header>
         <PageTitle>登録ページ</PageTitle>
         <div className="w-full mx-auto">
           <div action="">
