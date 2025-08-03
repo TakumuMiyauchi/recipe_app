@@ -22,10 +22,10 @@ export default function header() {
         <ul className="menu bg-base-200 text-base-content min-h-full w-80 p-4">
           {/* Sidebar content here */}
           <li>
-            <Link to="/">トップ</Link>
+            <Link to="/">登録ページ</Link>
           </li>
           <li>
-            <Link to="/myRecipe">登録</Link>
+            <Link to="/myRecipe">レシピ</Link>
           </li>
         </ul>
       </div>

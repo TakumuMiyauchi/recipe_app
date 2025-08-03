@@ -1,0 +1,27 @@
+GET  http://localhost:8080/api/recipe
+
+###
+
+GET  http://localhost:8080/api/recipe/688ed8719504dd4b3a472e9c
+
+###
+POST  http://localhost:8080/api/recipe
+Content-Type: application/json
+
+{
+	"name": "ソーメン",
+	"genre": "noodle",
+	"url": "https://oceans-nadia.com/user/484627/recipe/422842",
+	"memo": "おいしい"
+}
+
+###
+DELETE  http://localhost:8080/api/recipe/688ee881ecd1a1e13cf86866
+
+###
+PATCH http://localhost:8080/api/recipe/688ed8189504dd4b3a472e9c
+Content-Type: application/json
+
+{
+	"name": "サラダ"
+}

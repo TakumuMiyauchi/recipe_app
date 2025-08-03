@@ -6,7 +6,7 @@ import Header from "./components/Header";
 export default function ListMore() {
   return (
     <>
-			<Header></Header>
+			<Header></Header>	
       <PageTitle>詳細ページ</PageTitle>
     </>
   );

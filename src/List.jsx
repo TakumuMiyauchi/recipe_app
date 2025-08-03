@@ -3,6 +3,7 @@ import PageTitle from "./components/PageTitle";
 import Header from "./components/Header";
 
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 
 export default function List() {
@@ -29,7 +30,7 @@ export default function List() {
               </p>
               <a className="mt-4 block">{item.url}</a>
               <p className="mt-4">{item.memo}</p>
-              <button className="mt-4 btn btn-sm">詳細</button>
+              <Link to="/about" className="mt-4 btn btn-sm">詳細</Link>
             </li>
           );
         })}
