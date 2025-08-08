@@ -1,10 +1,12 @@
 import express from "express";
 // バリデーション
 import { body } from "express-validator";
+import { requestErrorHandler } from "../helpers/helper.mjs";
+
 import {
   getAllRecipe,
   getRecipeById,
-	DeleteRecipe,
+  DeleteRecipe,
   registRecipe,
   updateRecipe,
 } from "../controllers/recipe.mjs";
@@ -12,6 +14,7 @@ import {
 const router = express.Router();
 
 // const recipe = [
+
 //   {
 //     name: "ラーメン",
 //     genre: "noodle",
@@ -23,9 +26,10 @@ const router = express.Router();
 // ];
 
 // /api/recipe
-router.get("/", getAllRecipe);
 
-router.get("/:id", getRecipeById);
+router.get("/", requestErrorHandler(getAllRecipe));
+
+router.get("/:id", requestErrorHandler(getRecipeById));
 
 router.post(
   "/",
@@ -36,10 +40,10 @@ router.post(
     .withMessage("ジャンルを選択してください"),
   body("url").notEmpty().withMessage("エラー"),
   // 処理
-  registRecipe
+  requestErrorHandler(registRecipe)
 );
 
-router.delete("/:id", DeleteRecipe);
+router.delete("/:id", requestErrorHandler(DeleteRecipe));
 
 router.patch(
   "/:id",
@@ -51,7 +55,7 @@ router.patch(
     .withMessage("ジャンルを選択してください"),
   body("url").optional().notEmpty().withMessage("エラー"),
   // 処理
-  updateRecipe
+  requestErrorHandler(updateRecipe)
 );
 
 export default router;

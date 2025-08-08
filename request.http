@@ -16,10 +16,9 @@ Content-Type: application/json
 }
 
 ###
-DELETE  http://localhost:8080/api/recipe/688ee881ecd1a1e13cf86866
-
+DELETE  http://localhost:8080/api/recipe/68
 ###
-PATCH http://localhost:8080/api/recipe/688ed8189504dd4b3a472e9c
+PATCH http://localhost:8080/api/recipe/68
 Content-Type: application/json
 
 {

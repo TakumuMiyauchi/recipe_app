@@ -10,9 +10,9 @@ async function getAllRecipe(req, res) {
 async function getRecipeById(req, res) {
   const _id = req.params.id;
   const recipe = await Recipe.findById(_id);
-	if(recipe === null ) {
-		res.status(404).json({msg: "Page Not Found"});
-	}
+  if (recipe === null) {
+    res.status(404).json({ msg: "Page Not Found" });
+  }
   res.json(recipe);
 }
 
@@ -36,11 +36,10 @@ async function registRecipe(req, res) {
 async function DeleteRecipe(req, res) {
   const _id = req.params.id;
   console.log(_id);
-  const {deletedCount} = await Recipe.deleteOne({ _id });
-	if(deletedCount === 0 ) {
-		res.status(404).json({msg: "Page Not Found"});
-	}
-	console.log(result);
+  const { deletedCount } = await Recipe.deleteOne({ _id });
+  if (deletedCount === 0) {
+    res.status(404).json({ msg: "Page Not Found" });
+  }
   res.json({ msg: "Delete successed" });
 }
 
@@ -58,10 +57,10 @@ async function updateRecipe(req, res) {
   const _id = req.params.id;
   console.log(_id);
   const recipe = await Recipe.findById(_id);
-	// 指定したID値が存在しない場合の処理
-	if(recipe === null ) {
-		res.status(404).json({msg: "Target Recipe Not Found"});
-	}
+  // 指定したID値が存在しない場合の処理
+  if (recipe === null) {
+    res.status(404).json({ msg: "Target Recipe Not Found" });
+  }
   if (name !== undefined) {
     recipe.name = name;
   }
