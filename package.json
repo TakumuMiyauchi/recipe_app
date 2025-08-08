@@ -4,11 +4,12 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "concurrently \"npm:dev:client\" \"npm:dev:api\"",
+    "dev:client": "vite",
+    "dev:api": "nodemon server/app.mjs",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview",
-    "dev:api": "nodemon server/app.mjs"
+    "preview": "vite preview"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.8.2",
@@ -29,6 +30,7 @@
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
     "@vitejs/plugin-react": "^4.3.4",
+    "concurrently": "^9.2.0",
     "daisyui": "^5.0.43",
     "eslint": "^9.15.0",
     "eslint-plugin-react": "^7.37.2",
