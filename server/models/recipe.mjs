@@ -1,4 +1,4 @@
-// スキーマの接続
+// スキーマの接続 mongooseでの接続
 import {Schema, model} from "mongoose";
 
 const recipeSchema =Schema({
