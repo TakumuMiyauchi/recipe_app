@@ -47,7 +47,7 @@ export default function Register() {
   return (
     <>
       <div>
-        <Header></Header>
+        <Header />
         <PageTitle>登録ページ</PageTitle>
         <div className="w-full mx-auto">
           <div action="">

@@ -5,13 +5,14 @@ import Header from "./components/Header";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
+import "./api/recipe.jsx"
 
 export default function List() {
   const addRecipe = useSelector((state) => state.recipes.value);
 
   return (
     <>
-      <Header></Header>
+      <Header />
       <PageTitle>レシピ一覧</PageTitle>
       <ul className="bg-base-100 rounded-box shadow-md mx-auto mt-10 w-[90%] sm:w-1/2 ">
         {addRecipe.map((item) => {

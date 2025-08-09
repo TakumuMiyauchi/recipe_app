@@ -10,6 +10,12 @@ const port = process.env.PORT || 8080;
 
 app.use(express.json());
 
+// CORSの設定
+import cors from "cors";
+app.use(cors({
+	origin: 'http://localhost:5173',
+}))
+
 // APIの取得
 app.use("/api", apiRoutes);
 
