@@ -13,20 +13,6 @@ import {
 
 const router = express.Router();
 
-// const recipe = [
-
-//   {
-//     name: "ラーメン",
-//     genre: "noodle",
-//     url: "https://tabelog.com/saitama/C11234/rstLst/MC0101/",
-//     memo: "おいしい",
-//     created: new Date().toISOString(),
-//     isDone: false,
-//   },
-// ];
-
-// /api/recipe
-
 router.get("/", requestErrorHandler(getAllRecipe));
 
 router.get("/:id", requestErrorHandler(getRecipeById));

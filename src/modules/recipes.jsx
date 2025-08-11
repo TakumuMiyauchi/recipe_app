@@ -1,22 +1,24 @@
-import {createSlice} from "@reduxjs/toolkit"
+import { createSlice } from "@reduxjs/toolkit";
 
 const recipes = createSlice({
-	name: "recipes",
-	initialState: {
-		value: []
-	},
-	reducers: {
-    setRecipes: (state, {payload}) => {
-			state.value = payload;
+  name: "recipes",
+  initialState: {
+    value: [],
+  },
+  reducers: {
+    setRecipes: (state, { payload }) => {
+      state.value = Array.isArray(payload) ? payload : [];
+    },
 
+    addRecipe: (state, { payload }) => {
+      state.value.push(payload);
+    },
 
-			// return {
-			// 	...state, //元のstateオブジェクト（★例：{ value: [...] }）のすべてのプロパティを展開（コピー）します。
-			// 	value: [...state.value, payload], // valueプロパティを、既存の配列(...state.value)にpayloadを追加した新しい配列に★上書きする。→既にあるvalueプロパティを上書き
-			// }
-    }
-	}
-})
+    deleteRecipe: (state, { payload }) => {
+      state.value = state.value.filter((val) => (val._id ?? val.id) != payload);
+    },
+  },
+});
 
-export const {setRecipes} = recipes.actions;
-export default recipes.reducer
+export const { setRecipes, addRecipe, deleteRecipe } = recipes.actions;
+export default recipes.reducer;

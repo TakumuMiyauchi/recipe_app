@@ -13,7 +13,7 @@ const routesLink = createBrowserRouter(
       <>
         <Route path="/" element={<Register />}></Route>
         <Route path="/myRecipe" element={<List />}></Route>
-        <Route path="/about" element={<ListMore />}></Route>
+        <Route path="/about/:id" element={<ListMore />}></Route>
       </>
     )
   );

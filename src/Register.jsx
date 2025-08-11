@@ -1,6 +1,5 @@
 // レシピ登録ページ
 import { useState } from "react";
-import { v4 as uuidv4 } from "uuid";
 
 import PageTitle from "./components/PageTitle";
 
@@ -15,7 +14,9 @@ import Input_button from "./components/Input_button";
 import Header from "./components/Header";
 
 import { useDispatch } from "react-redux";
-import { setRecipes } from "./modules/recipes";
+import { addRecipe } from "./modules/recipes.jsx";
+
+import recipeApi from "./api/recipe";
 
 export default function Register() {
   const [form, setForm] = useState({
@@ -31,18 +32,21 @@ export default function Register() {
 
   const dispatch = useDispatch();
 
-  const handleRecipeList = () => {
-    dispatch(
-      setRecipes({
-        id: uuidv4(),
+  const handleRecipeList = async () => {
+    try {
+      const saveRecipe = await recipeApi.post({
         name: form.name,
         genre: form.genre,
         url: form.url,
         memo: form.memo,
         created: new Date().toISOString(),
         isDone: false,
-      })
-    );
+      });
+      dispatch(addRecipe(saveRecipe));
+			window.confirm("登録が完了しました。")
+    } catch (err) {
+      console.error("レシピ登録に失敗しました", err);
+    }
   };
   return (
     <>
