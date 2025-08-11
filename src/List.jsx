@@ -8,6 +8,8 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import recipeApi from "./api/recipe";
 
+
+
 export default function List() {
   const dispatch = useDispatch();
   const recipes = useSelector((state) => state.recipes.value);
@@ -75,7 +77,8 @@ export default function List() {
                   <div>
                     <img
                       className="size-20 rounded-box mt-4"
-                      src="https://img.daisyui.com/images/profile/demo/1@94.webp"
+											src={item.image || "/src/public/no_image_square.jpg"}
+											alt={item.image ? item.name : "画像がありません"}
                     />
                   </div>
                   <p className="text-lg mt-4">{item.name}</p>
